@@ -39,7 +39,11 @@ const SumRestrict = {
 
 module.exports = {
   name: `--generate`,
-  run() {}
+  run(args) {
+    const [count] = args;
+    const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
+    const content = JSON.stringify(generateOffers(countOffer));
+  }
 };
 
 const generateOffers = count =>
@@ -60,4 +64,6 @@ const generateOffers = count =>
       sum: getRandomInt(SumRestrict.min, SumRestrict.max)
     }));
 
-    
+const [count] = args;
+const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
+const content = JSON.stringify(generateOffers(countOffer));
