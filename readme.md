@@ -1,7 +1,7 @@
 # Личный проект «Куплю. Продам» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Титов](https://up.htmlacademy.ru/nodejs/3/user/497903).
-* Наставник: `Неизвестно`.
+* Наставник: [Вадим Шевяков](https://htmlacademy.ru/profile/id574589).
 
 ---
 
