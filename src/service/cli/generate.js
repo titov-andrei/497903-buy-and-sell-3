@@ -3,6 +3,7 @@
 const DEFAULT_COUNT = 1;
 const FILE_NAME = `mocks.json`;
 const { getRandomInt, shuffle } = require(`../../utils`);
+const fs = require(`fs`);
 
 const TITLES = [
   `Продам книги Стивена Кинга`,
@@ -67,3 +68,11 @@ const generateOffers = count =>
 const [count] = args;
 const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 const content = JSON.stringify(generateOffers(countOffer));
+
+fs.writeFile(FILE_NAME, content, err => {
+  if (err) {
+    return console.error(`Can't write data to file...`);
+  }
+
+  return console.info(`Operation success. File created.`);
+});
