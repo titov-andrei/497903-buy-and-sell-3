@@ -62,6 +62,5 @@ module.exports = {
     const content = JSON.stringify(generateOffers(countOffer));
 
     makeMockData(FILE_NAME, content);
-    process.exit(ExitCode.success);
   }
 };
