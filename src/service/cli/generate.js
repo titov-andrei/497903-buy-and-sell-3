@@ -20,7 +20,7 @@ const {
   PictureRestrict
 } = require(`./mockData`);
 
-const generateOffers = count =>
+const generateOffers = (count) =>
   Array(count)
     .fill({})
     .map(() => ({
@@ -28,14 +28,14 @@ const generateOffers = count =>
       picture: getPictureFilename(
         getRandomInt(PictureRestrict.min, PictureRestrict.max)
       ),
-      description: shuffle(SENTENCES)
-        .slice(1, 5)
-        .join(` `),
+      description: shuffle(SENTENCES).slice(1, 5).join(` `),
       type: Object.keys(OfferType)[
         Math.floor(Math.random() * Object.keys(OfferType).length)
       ],
       sum: getRandomInt(SumRestrict.min, SumRestrict.max),
-      category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]]
+      category: [
+        shuffle(CATEGORIES).slice(0, getRandomInt(0, CATEGORIES.length - 1)),
+      ],
     }));
 
 const makeMockData = (filename, data) => {
