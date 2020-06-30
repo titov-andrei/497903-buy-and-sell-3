@@ -41,10 +41,10 @@ const generateOffers = count =>
     category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]]
   }));
 
-const makeMockData = (filename, data) => {
+const makeMockData = async (filename, data) => {
   try {
-    await fs.writeFileSync(filename, data);
-    console.log(chalk.green(`The file has been saved!`));
+    await fs.writeFile(filename, data);
+    console.info(chalk.green(`The file has been saved!`));
   } catch (err) {
     console.error(chalk.red(`Can't write data to file`));
   }
@@ -52,7 +52,7 @@ const makeMockData = (filename, data) => {
 
 module.exports = {
   name: `--generate`,
-  async run(userIndex) {
+  run(userIndex) {
     const [count] = userIndex;
 
     if (count > MAX_COUNT) {
