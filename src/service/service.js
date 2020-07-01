@@ -8,7 +8,7 @@ const [command] = userArguments;
 
 if (userArguments.length === 0 || !Cli[command]) {
   Cli[DEFAULT_COMMAND].run();
+  process.exit(ExitCode.success);
 }
 
 Cli[command].run(userArguments.slice(1));
-process.exit(ExitCode.success);

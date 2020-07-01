@@ -1,7 +1,10 @@
 "use strict";
 
-const fs = require(`fs`);
-const { ExitCode } = require(`../constants`);
+const fs = require(`fs`).promises;
+const chalk = require(`chalk`);
+const {
+  ExitCode
+} = require(`../constants`);
 const {
   getPictureFilename,
   getRandomInt,
@@ -22,30 +25,29 @@ const {
 
 const generateOffers = count =>
   Array(count)
-    .fill({})
-    .map(() => ({
-      title: TITLES[getRandomInt(0, TITLES.length - 1)],
-      picture: getPictureFilename(
-        getRandomInt(PictureRestrict.min, PictureRestrict.max)
-      ),
-      description: shuffle(SENTENCES)
-        .slice(1, 5)
-        .join(` `),
-      type: Object.keys(OfferType)[
-        Math.floor(Math.random() * Object.keys(OfferType).length)
-      ],
-      sum: getRandomInt(SumRestrict.min, SumRestrict.max),
-      category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]]
-    }));
+  .fill({})
+  .map(() => ({
+    title: TITLES[getRandomInt(0, TITLES.length - 1)],
+    picture: getPictureFilename(
+      getRandomInt(PictureRestrict.min, PictureRestrict.max)
+    ),
+    description: shuffle(SENTENCES)
+      .slice(1, 5)
+      .join(` `),
+    type: Object.keys(OfferType)[
+      Math.floor(Math.random() * Object.keys(OfferType).length)
+    ],
+    sum: getRandomInt(SumRestrict.min, SumRestrict.max),
+    category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]]
+  }));
 
-const makeMockData = (filename, data) => {
-  fs.writeFileSync(filename, data, err => {
-    if (err) {
-      console.error(`Can't write data to file`);
-    }
-
-    console.log(`The file has been saved!`);
-  });
+const makeMockData = async (filename, data) => {
+  try {
+    await fs.writeFile(filename, data);
+    console.info(chalk.green(`The file has been saved!`));
+  } catch (err) {
+    console.error(chalk.red(`Can't write data to file`));
+  }
 };
 
 module.exports = {
@@ -54,7 +56,7 @@ module.exports = {
     const [count] = userIndex;
 
     if (count > MAX_COUNT) {
-      console.error(`Не больше ${MAX_COUNT} объявлений`);
+      console.error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
       process.exit(ExitCode.fail);
     }
 
@@ -62,5 +64,5 @@ module.exports = {
     const content = JSON.stringify(generateOffers(countOffer));
 
     makeMockData(FILE_NAME, content);
-  }
+  },
 };
