@@ -1,8 +1,8 @@
 "use strict";
 
-const pathCategories = `../../../data/categories.txt`
-const pathSentences = `../../../data/sentences.txt`
-const pathTitles = `../../../data/titles.txt`
+const pathCategories = `data/categories.txt`
+const pathSentences = `data/sentences.txt`
+const pathTitles = `data/titles.txt`
 
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
