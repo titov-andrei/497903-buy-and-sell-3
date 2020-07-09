@@ -17,7 +17,7 @@ const {
 
 const DEFAULT_COUNT = 1;
 const MAX_COUNT = 1000;
-const FILE_NAME = `mock.json`;
+const FILE_NAME = `mocks.json`;
 const {
   OfferType,
   SumRestrict,
