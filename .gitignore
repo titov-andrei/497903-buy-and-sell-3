@@ -15,4 +15,4 @@ node_modules/
 build/
 
 # Тестовые наборы данных для объявлений
-mock.json
+mocks.json
