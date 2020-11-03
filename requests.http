@@ -1,10 +1,10 @@
 # Список всех объявлений
 GET http://localhost:3000/api/offers HTTP/1.1
 
-# Полная информация определённого объявления
-GET http://localhost:3000/api/offers/NeDf1F HTTP/1.1
+# # Полная информация определённого объявления
+GET http://localhost:3000/api/offers/bQM-qQ HTTP/1.1
 
-# Список категорий
+# # Список категорий
 GET http://localhost:3000/api/category HTTP/1.1
 
 # Создание нового объявления
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 # Обновление объявления
-PUT http://localhost:3000/api/offers/NeDf1F HTTP/1.1
+PUT http://localhost:3000/api/offers/bQM-qQ HTTP/1.1
 Content-Type: application/json
 
 {
@@ -34,16 +34,16 @@ Content-Type: application/json
 }
 
 # Удаление объявления с идентификатором￼
-DELETE http://localhost:3000/api/offers/NeDf1F HTTP/1.1
+DELETE http://localhost:3000/api/offers/bQM-qQ HTTP/1.1
 
 # Список комментариев определённого объявления
-GET http://localhost:3000/api/offers/NeDf1F/comments HTTP/1.1
+GET http://localhost:3000/api/offers/bQM-qQ/comments HTTP/1.1
 
 # Удаление из определённой публикации комментарий с идентификатором
-DELETE http://localhost:3000/api/offers/NeDf1F/comments/IP1HVz HTTP/1.1
+DELETE http://localhost:3000/api/offers/bQM-qQ/comments/8y422F HTTP/1.1
 
 # Добавление нового комментария к публикации
-POST http://localhost:3000/api/offers/NeDf1F/comments HTTP/1.1
+POST http://localhost:3000/api/offers/bQM-qQ/comments HTTP/1.1
 Content-Type: application/json
 
 {
