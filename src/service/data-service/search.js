@@ -10,4 +10,4 @@ class SearchService {
   }
 }
 
-module.exports = { SearchService };
+module.exports = SearchService;
