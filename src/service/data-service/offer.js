@@ -44,4 +44,4 @@ class OfferService {
   }
 }
 
-module.exports = { OfferService };
+module.exports = OfferService;
