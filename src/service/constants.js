@@ -20,3 +20,5 @@ module.exports = {
   ExitCode,
   HttpCode
 };
+
+module.exports.MAX_ID_LENGTH = 6;
