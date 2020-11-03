@@ -33,4 +33,4 @@ class CommentService {
   }
 }
 
-module.exports = { CommentService };
+module.exports = CommentService;
