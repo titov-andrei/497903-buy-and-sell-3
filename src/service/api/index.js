@@ -24,4 +24,4 @@ const app = new Router();
   search(app, new SearchService(mockData));
 })();
 
-module.exports = { app };
+module.exports = app;
