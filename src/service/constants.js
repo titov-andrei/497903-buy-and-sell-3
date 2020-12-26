@@ -4,7 +4,7 @@ const DEFAULT_COMMAND = `--help`;
 const USER_ARGV_INDEX = 2;
 const ExitCode = {
   success: 0,
-  fail: 1
+  fail: 1,
 };
 const HttpCode = {
   OK: 200,
@@ -18,7 +18,7 @@ module.exports = {
   DEFAULT_COMMAND,
   USER_ARGV_INDEX,
   ExitCode,
-  HttpCode
+  HttpCode,
 };
 
 module.exports.MAX_ID_LENGTH = 6;
