@@ -1,9 +1,20 @@
 "use strict";
 
+// Подключаем и инициализируем экземпляр Router
 const { Router } = require(`express`);
+const api = require(`../api`).getAPI();
 const myRoutes = new Router();
 
-myRoutes.get(`/`, (req, res) => res.render(`my-tickets`));
-myRoutes.get(`/comments`, (req, res) => res.render(`comments`));
+// Определяем `GET` маршруты.
+// В качестве ответа отправляем путь маршрута.
+myRoutes.get(`/`, async (req, res) => {
+  const pugOffers = await api.getOffers();
+  res.render(`my-tickets`, { pugOffers });
+});
+
+myRoutes.get(`/comments`, async (req, res) => {
+  const pugOffers = await api.getOffers();
+  res.render(`comments`, { pugOffers: pugOffers.slice(0, 3) });
+});
 
 module.exports = myRoutes;
