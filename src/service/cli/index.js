@@ -6,11 +6,14 @@ const generate = require(`./generate`);
 
 const server = require(`./server`);
 
+const fill = require(`./fill`);
+
 const Cli = {
   [help.name]: help,
   [version.name]: version,
   [generate.name]: generate,
-  [server.name]: server
+  [server.name]: server,
+  [fill.name]: fill,
 };
 
 module.exports = { Cli };
