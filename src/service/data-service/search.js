@@ -1,15 +1,23 @@
 "use strict";
 
+const { Op } = require(`sequelize`);
+const Aliase = require(`../models/aliase`);
+
 class SearchService {
-  // конструктор принимает данные о всех объявлениях
-  // и сохраняет их в одноимённое приватное свойство
-  constructor(offers) {
-    this._offers = offers;
+  constructor(sequelize) {
+    this._Offer = sequelize.models.Offer;
   }
 
-  // метод который возвращает все объявления
-  findAll(searchText) {
-    return this._offers.filter((offer) => offer.title.includes(searchText));
+  async findAll(searchText) {
+    const offers = await this._Offer.findAll({
+      where: {
+        title: {
+          [Op.substring]: searchText,
+        },
+      },
+      include: [Aliase.CATEGORIES],
+    });
+    return offers.map((offer) => offer.get());
   }
 }
 
