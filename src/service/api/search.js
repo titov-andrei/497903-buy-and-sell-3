@@ -9,7 +9,7 @@ module.exports = (app, service) => {
   app.use(`/search`, route);
 
   // возвращает результаты поиска
-  route.get(`/`, (req, res) => {
+  route.get(`/`, async (req, res) => {
     const { query = `` } = req.query;
 
     if (!query) {
@@ -21,7 +21,7 @@ module.exports = (app, service) => {
     // который передаётся в виде аргумента
     // вызываем метод findAll, который должен
     // вернуть все результаты поиска
-    const searchResults = service.findAll(query);
+    const searchResults = await service.findAll(query);
     const searchStatus =
       searchResults.length > 0 ? HttpCode.OK : HttpCode.NOT_FOUND;
 

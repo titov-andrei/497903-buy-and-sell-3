@@ -11,18 +11,20 @@ block content
         ul
           each pugOffer in pugOffers
             li.tickets-list__item
-              .ticket-card.ticket-card--color01
+              ticketCard()
                 .ticket-card__img
                   img(src=`/img/${pugOffer.picture}` alt=pugOffer.title)
                 .ticket-card__info
                   +ticketLabel(pugOffer.type)
                   .ticket-card__categories
-                    a(href="#") #{pugOffer.category}
+                    each category in offer.categories
+                      a(href="#") #{category.name}
                   .ticket-card__header
                     h3.ticket-card__title
-                      a(href="#") #{pugOffer.title}
+                      a(href=`offers/${offer.id}`) #{offer.title}
                     p.ticket-card__price
                       span.js-sum #{pugOffer.sum}
                       |  ₽
                   .ticket-card__desc
                     p #{pugOffer.description}
+  +pagination(page, totalPages, 2, `?`)

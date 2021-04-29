@@ -7,6 +7,14 @@ head
   title Куплю. Продам
   link(href='/css/style.min.css' rel='stylesheet')
 body
+  -
+    const getRandomInt = (max) => Math.ceil(Math.random()*max);
+  mixin categoryImage(category)
+    -
+      const idPadded = `0${getRandomInt(6)}`
+
+    img(src=`/img/cat${idPadded}.jpg` alt=category.name srcset=`/img/cat${idPadded}@2x.jpg 2x`)
+    
   mixin ticketLabel(type)
     span(class!=attributes.class || `ticket-card__label`) #{type === `OFFER` ? `Куплю` : `Продам`}
   include partials/header.pug

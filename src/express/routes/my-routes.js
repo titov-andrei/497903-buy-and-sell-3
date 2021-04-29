@@ -13,7 +13,7 @@ myRoutes.get(`/`, async (req, res) => {
 });
 
 myRoutes.get(`/comments`, async (req, res) => {
-  const pugOffers = await api.getOffers();
+  const pugOffers = await api.getOffers({ comments: true });
   res.render(`comments`, { pugOffers: pugOffers.slice(0, 3) });
 });
 
