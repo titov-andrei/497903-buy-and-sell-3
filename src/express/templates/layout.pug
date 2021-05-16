@@ -7,6 +7,11 @@ head
   title Куплю. Продам
   link(href='/css/style.min.css' rel='stylesheet')
 body
+  style.
+    a.active{
+      pointer-events: none;
+    }
+
   -
     const getRandomInt = (max) => Math.ceil(Math.random()*max);
   mixin categoryImage(category)
@@ -14,9 +19,44 @@ body
       const idPadded = `0${getRandomInt(6)}`
 
     img(src=`/img/cat${idPadded}.jpg` alt=category.name srcset=`/img/cat${idPadded}@2x.jpg 2x`)
-    
+
   mixin ticketLabel(type)
     span(class!=attributes.class || `ticket-card__label`) #{type === `OFFER` ? `Куплю` : `Продам`}
+
+  mixin pagination(page, totalPages, width, prefix)
+    -
+      let start = page - width;
+      let end = page + width;
+
+      if(start < 1){
+        end += 1 - start;
+        start = 1;
+      }
+
+      if(end > totalPages){
+        start -= end - totalPages;
+        end = totalPages;
+      }
+
+      if(start < 1){
+        start = 1;
+      }
+
+      let i = start - 1
+    .tickets-list__pagination
+      ul.pagination
+        if start > 1
+          li
+            a(href=`${prefix}page=${page - 1}`) Назад
+
+        while i++ < end
+          li
+            a(class={active: i === page} href=`${prefix}page=${i}`)= i
+            
+        if end < totalPages
+          li
+            a(href=`${prefix}page=${page + 1}`) Вперёд
+
   include partials/header.pug
   block content
   include partials/footer.pug

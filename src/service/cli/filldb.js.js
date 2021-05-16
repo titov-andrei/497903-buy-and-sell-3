@@ -48,7 +48,6 @@ const generateOffers = (count, CATEGORIES, SENTENCES, TITLES, COMMENTS) =>
   Array(count)
     .fill({})
     .map(() => ({
-      id: nanoid(6),
       title: TITLES[getRandomInt(0, TITLES.length - 1)],
       picture: getPictureFilename(
         getRandomInt(PictureRestrict.min, PictureRestrict.max)

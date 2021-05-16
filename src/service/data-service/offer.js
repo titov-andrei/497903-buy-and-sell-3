@@ -41,6 +41,16 @@ class OfferService {
     const offers = await this._Offer.findAll({ include });
     return offers.map((item) => item.get());
   }
+
+  async findPage({ limit, offset }) {
+    const { count, rows } = await this._Offer.findAndCountAll({
+      limit,
+      offset,
+      include: [Aliases.CATEGORIES],
+      distinct: true,
+    });
+    return { count, offers: rows };
+  }
 }
 
 module.exports = OfferService;
