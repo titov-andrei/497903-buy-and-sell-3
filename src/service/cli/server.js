@@ -48,20 +48,15 @@ app.use((err, _req, _res, _next) => {
 module.exports = {
   name: `--server`,
   async run(args) {
-    try {
-      await sequelize.authenticate();
-    } catch (err) {
-      process.exit(1);
-    }
 
     try {
-      logger.info(`Trying to connect to database...`);
+      console.log(`Trying to connect to database...`);
       await sequelize.authenticate();
     } catch (err) {
-      logger.error(`An error occured: ${err.message}`);
+      console.log(`An error occured: ${err.message}`);
       process.exit(1);
     }
-    logger.info(`Connection to database established`);
+    console.log(`Connection to database established`);
 
     const [userPort] = args;
     const port = Number(parseInt(userPort, 10)) || DEFAULT_PORT;
@@ -72,7 +67,7 @@ module.exports = {
           return logger.error(`Ошибка при создании сервера`, err);
         }
 
-        return logger.info(chalk.green(`Ожидаю соединений на ${port}`));
+        return console.log(chalk.green(`Ожидаю соединений на ${port}`));
       });
     } catch (err) {
       logger.error(`Произошла ошибка: ${err.message}`);
