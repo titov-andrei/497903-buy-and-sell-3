@@ -4,12 +4,14 @@
 const { Router } = require(`express`);
 const mainRoutes = new Router();
 const api = require(`../api`).getAPI();
+const upload = require(`../middlewares/upload`);
 
 const OFFERS_PER_PAGE = 8;
 
 // Определяем `GET` маршруты.
 // В качестве ответа отправляем путь маршрута.
 mainRoutes.get(`/`, async (req, res) => {
+  const { user } = req.session;
   let { page = 1 } = req.query;
   page = +page;
   const limit = OFFERS_PER_PAGE;
@@ -21,9 +23,32 @@ mainRoutes.get(`/`, async (req, res) => {
   ]);
 
   const totalPages = Math.ceil(count / OFFERS_PER_PAGE);
-  res.render(`main`, { pugOffers, page, totalPages, categories });
+  res.render(`main`, { pugOffers, page, totalPages, categories, user });
 });
-mainRoutes.get(`/register`, (req, res) => res.render(`sign-up`));
+
+mainRoutes.get(`/register`, (req, res) => {
+  const { error } = req.query;
+  const { user } = req.session;
+  res.render(`sign-up`, { error, user });
+});
+
+mainRoutes.post(`/register`, upload.single(`avatar`), async (req, res) => {
+  const { body, file } = req;
+  const userData = {
+    avatar: file.filename,
+    name: body[`user-name`],
+    email: body[`user-email`],
+    password: body[`user-password`],
+    passwordRepeated: body[`user-password-again`]
+  };
+  try {
+    await api.createUser(userData);
+    res.redirect(`/login`);
+  } catch (error) {
+    res.redirect(`/register?error=${encodeURIComponent(error.response.data)}`);
+  }
+});
+
 mainRoutes.get(`/login`, (req, res) => res.render(`login`));
 mainRoutes.get(`/search`, async (req, res) => {
   try {
