@@ -62,15 +62,6 @@ module.exports = (app, offerService, commentService) => {
     return res.status(HttpCode.OK).send(`Updated`);
   });
 
-  // -----
-  route.put(`/:offerId`, validation(schema), async (req, res) => {
-    const { body } = req;
-    res.json({
-      message: `A offer updated.`,
-      data: body
-    });
-  });
-
   route.delete(`/:offerId`, async (req, res) => {
     const { offerId } = req.params;
     const offer = await offerService.drop(offerId);
@@ -111,13 +102,4 @@ module.exports = (app, offerService, commentService) => {
       return res.status(HttpCode.CREATED).json(comment);
     }
   );
-
-  // -----
-  route.post(`/:offerId/comments`, validation(commentSchema), async (req, res) => {
-    const { body } = req;
-    res.json({
-      message: `A new comment created.`,
-      data: body
-    });
-  });
 };
