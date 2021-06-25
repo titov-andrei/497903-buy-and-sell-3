@@ -12,6 +12,19 @@ body
       pointer-events: none;
     }
 
+  style.
+    .server-error{
+      border-radius: 10px;
+      color: white;
+      background-color: tomato;
+      margin: 20px 0;
+      padding: 10px;
+    }
+    
+  mixin errorMessage(message)
+    if message
+      .server-error= message
+
   -
     const getRandomInt = (max) => Math.ceil(Math.random()*max);
   mixin categoryImage(category)
@@ -52,7 +65,7 @@ body
         while i++ < end
           li
             a(class={active: i === page} href=`${prefix}page=${i}`)= i
-            
+
         if end < totalPages
           li
             a(href=`${prefix}page=${page + 1}`) Вперёд
