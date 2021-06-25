@@ -8,21 +8,22 @@ const initDB = require(`../lib/init-db`);
 const category = require(`./category`);
 const DataService = require(`../data-service/category`);
 
-const { HttpCode } = require(`../../constants`);
+const { HttpCode } = require(`../constants`);
 
 const mockCategories = [`Животные`, `Журналы`, `Игры`];
 
 const mockOffers = [
   {
+    user: `ivanov@example.com`,
     categories: [`Игры`, `Журналы`],
     comments: [
       {
+        user: `petrov@example.com`,
         text: `С чем связана продажа? Почему так дешёво? Неплохо, но дорого. А где блок питания?`,
       },
+      { user: `ivanov@example.com`, text: `А где блок питания?` },
       {
-        text: `А где блок питания?`,
-      },
-      {
+        user: `petrov@example.com`,
         text: `Оплата наличными или перевод на карту? Неплохо, но дорого. Почему в таком ужасном состоянии?`,
       },
     ],
@@ -33,15 +34,16 @@ const mockOffers = [
     sum: 10030,
   },
   {
+    user: `ivanov@example.com`,
     categories: [`Игры`],
     comments: [
       {
+        user: `ivanov@example.com`,
         text: `А где блок питания? С чем связана продажа? Почему так дешёво?`,
       },
+      { user: `petrov@example.com`, text: `А сколько игр в комплекте?` },
       {
-        text: `А сколько игр в комплекте?`,
-      },
-      {
+        user: `ivanov@example.com`,
         text: `Оплата наличными или перевод на карту? Вы что?! В магазине дешевле.`,
       },
     ],
@@ -52,9 +54,11 @@ const mockOffers = [
     sum: 6694,
   },
   {
+    user: `petrov@example.com`,
     categories: [`Журналы`, `Животные`],
     comments: [
       {
+        user: `ivanov@example.com`,
         text: `Совсем немного... А сколько игр в комплекте? Неплохо, но дорого.`,
       },
     ],
@@ -65,12 +69,15 @@ const mockOffers = [
     sum: 87784,
   },
   {
+    user: `petrov@example.com`,
     categories: [`Игры`],
     comments: [
       {
+        user: `petrov@example.com`,
         text: `А сколько игр в комплекте? Продаю в связи с переездом. Отрываю от сердца.`,
       },
       {
+        user: `ivanov@example.com`,
         text: `С чем связана продажа? Почему так дешёво?`,
       },
     ],
@@ -81,18 +88,23 @@ const mockOffers = [
     sum: 54264,
   },
   {
+    user: `ivanov@example.com`,
     categories: [`Животные`],
     comments: [
       {
+        user: `petrov@example.com`,
         text: `Оплата наличными или перевод на карту?`,
       },
       {
+        user: `ivanov@example.com`,
         text: `Почему в таком ужасном состоянии? Совсем немного...`,
       },
       {
+        user: `petrov@example.com`,
         text: `Продаю в связи с переездом. Отрываю от сердца. Оплата наличными или перевод на карту? Вы что?! В магазине дешевле.`,
       },
       {
+        user: `ivanov@example.com`,
         text: `С чем связана продажа? Почему так дешёво? А сколько игр в комплекте?`,
       },
     ],
