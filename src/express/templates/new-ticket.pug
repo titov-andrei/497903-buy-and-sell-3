@@ -41,4 +41,5 @@ block content
                     .switch__item
                       input#sell-field.visually-hidden(name='action', type='radio', value='SALE')
                       label.switch__button(for='sell-field') Продам
+              +errorMessage(error)
               button.form__button.btn.btn--medium.js-button(type='submit', disabled='') Опубликовать
