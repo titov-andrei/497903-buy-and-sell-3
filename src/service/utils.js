@@ -24,6 +24,8 @@ const getRandomInt = (min, max) => {
 const getPictureFilename = number =>
   `item${number < 10 ? `0${number}` : number}.jpg`;
 
+module.exports.ensureArray = (value) => Array.isArray(value) ? value : [value];
+
 module.exports = {
   getRandomInt,
   shuffle,
