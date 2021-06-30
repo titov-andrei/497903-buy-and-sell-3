@@ -4,7 +4,8 @@ const { HttpCode } = require(`../constants`);
 const Joi = require(`joi`);
 
 const schema = Joi.object({
-  text: Joi.string().min(20).required()
+  text: Joi.string().min(20).required(),
+  userId: Joi.number().integer().positive().required()
 });
 
 module.exports = (req, res, next) => {

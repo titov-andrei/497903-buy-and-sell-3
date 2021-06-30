@@ -27,11 +27,12 @@ const readFiles = async (path) => {
   }
 };
 
-const generateComments = (count, comments) =>
+const generateComments = (count, COMMENTS, USERS) =>
   Array(count)
     .fill({})
     .map(() => ({
-      text: shuffle(comments).slice(0, getRandomInt(1, 3)).join(` `),
+      user: USERS[getRandomInt(0, USERS.length - 1)].email,
+      text: shuffle(COMMENTS),
     }));
 
 const getRandomSubarray = (items) => {
@@ -44,10 +45,11 @@ const getRandomSubarray = (items) => {
   return result;
 };
 
-const generateOffers = (count, CATEGORIES, SENTENCES, TITLES, COMMENTS) =>
+const generateOffers = (count, CATEGORIES, SENTENCES, TITLES, COMMENTS, USERS) =>
   Array(count)
     .fill({})
     .map(() => ({
+      user: USERS[getRandomInt(0, USERS.length - 1)].email,
       title: TITLES[getRandomInt(0, TITLES.length - 1)],
       picture: getPictureFilename(
         getRandomInt(PictureRestrict.min, PictureRestrict.max)
@@ -58,7 +60,7 @@ const generateOffers = (count, CATEGORIES, SENTENCES, TITLES, COMMENTS) =>
       ],
       sum: getRandomInt(SumRestrict.min, SumRestrict.max),
       categories: getRandomSubarray(CATEGORIES),
-      comments: generateComments(getRandomInt(1, MAX_COMMENTS), comments),
+      comments: generateComments(getRandomInt(1, MAX_COMMENTS), COMMENTS, USERS),
     }));
 
 module.exports = {
@@ -77,6 +79,20 @@ module.exports = {
     const SENTENCES = await readFiles(pathSentences);
     const TITLES = await readFiles(pathTitles);
     const COMMENTS = await readFiles(pathComments);
+    const USERS = [
+      {
+        name: `Иван Иванов`,
+        email: `ivanov@example.com`,
+        passwordHash: await passwordUtils.hash(`ivanov`),
+        avatar: `avatar01.jpg`
+      },
+      {
+        name: `Пётр Петров`,
+        email: `petrov@example.com`,
+        passwordHash: await passwordUtils.hash(`petrov`),
+        avatar: `avatar02.jpg`
+      }
+    ];
 
     const [count] = userIndex;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
@@ -85,9 +101,10 @@ module.exports = {
       TITLES,
       CATEGORIES,
       SENTENCES,
-      COMMENTS
+      COMMENTS,
+      USERS
     );
 
-    return initDatabase(sequelize, { offers, categories });
+    return initDatabase(sequelize, { offers, CATEGORIES, USERS });
   },
 };

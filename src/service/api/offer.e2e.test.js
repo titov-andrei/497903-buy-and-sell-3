@@ -12,6 +12,7 @@ const { HttpCode } = require(`../constants`);
 const mockData = [
   {
     id: "35NMNT",
+    user: `ivanov@example.com`,
     title: "Куплю антиквариат",
     picture: "item07.jpg",
     description:
@@ -21,26 +22,29 @@ const mockData = [
     category: ["Журналы"],
     comments: [
       {
-        text:
-          "Оплата наличными или перевод на карту? А где блок питания? А сколько игр в комплекте?",
+        user: `ivanov@example.com`,
+        text: "Оплата наличными или перевод на карту? А где блок питания? А сколько игр в комплекте?",
         id: "av3dfa",
       },
       {
+        user: `petrov@example.com`,
         text: "Почему в таком ужасном состоянии?",
         id: "WOPcuS",
       },
       {
+        user: `ivanov@example.com`,
         text: "Вы что?! В магазине дешевле.",
         id: "BLneM0",
       },
       {
-        text:
-          "А сколько игр в комплекте? Продаю в связи с переездом. Отрываю от сердца.",
+        user: `petrov@example.com`,
+        text: "А сколько игр в комплекте? Продаю в связи с переездом. Отрываю от сердца.",
         id: "OKI8Ph",
       },
     ],
   },
   {
+    user: `ivanov@example.com`,
     id: "yvXTQV",
     title: "Куплю породистого кота",
     picture: "item02.jpg",
@@ -51,14 +55,15 @@ const mockData = [
     category: ["Кулинария"],
     comments: [
       {
-        text:
-          "Оплата наличными или перевод на карту? А сколько игр в комплекте?",
+        user: `ivanov@example.com`,
+        text: "Оплата наличными или перевод на карту? А сколько игр в комплекте?",
         id: "EKU2oF",
       },
     ],
   },
   {
     id: "xglB7H",
+    user: `petrov@example.com`,
     title: "Продам уроки по рисованию.",
     picture: "item00.jpg",
     description:
@@ -68,30 +73,34 @@ const mockData = [
     category: ["Посуда"],
     comments: [
       {
-        text:
-          "Продаю в связи с переездом. Отрываю от сердца. А где блок питания? Вы что?! В магазине дешевле.",
+        user: `ivanov@example.com`,
+        text: "Продаю в связи с переездом. Отрываю от сердца. А где блок питания? Вы что?! В магазине дешевле.",
         id: "wyUW1d",
       },
       {
+        user: `petrov@example.com`,
         text: "Вы что?! В магазине дешевле.",
         id: "1BUkvU",
       },
       {
-        text:
-          "А где блок питания? Совсем немного... Вы что?! В магазине дешевле.",
+        user: `ivanov@example.com`,
+        text: "А где блок питания? Совсем немного... Вы что?! В магазине дешевле.",
         id: "IMwOIW",
       },
       {
+        user: `petrov@example.com`,
         text: "Совсем немного... Вы что?! В магазине дешевле.",
         id: "I3yiEX",
       },
       {
+        user: `ivanov@example.com`,
         text: "Оплата наличными или перевод на карту?",
         id: "P10aa8",
       },
     ],
   },
   {
+    user: `petrov@example.com`,
     id: "CBv8Hy",
     title: "Куплю антиквариат",
     picture: "item14.jpg",
@@ -102,38 +111,36 @@ const mockData = [
     category: ["Игры"],
     comments: [
       {
-        text:
-          "Неплохо, но дорого Вы что?! В магазине дешевле. Оплата наличными или перевод на карту?",
+        user: `ivanov@example.com`,
+        text: "Неплохо, но дорого Вы что?! В магазине дешевле. Оплата наличными или перевод на карту?",
         id: "gVh1Dl",
       },
       {
+        user: `petrov@example.com`,
         text: "Совсем немного... А сколько игр в комплекте?",
         id: "OHZ7uL",
       },
       {
-        text:
-          "Оплата наличными или перевод на карту? Неплохо, но дорого Продаю в связи с переездом. Отрываю от сердца.",
+        user: `ivanov@example.com`,
+        text: "Оплата наличными или перевод на карту? Неплохо, но дорого Продаю в связи с переездом. Отрываю от сердца.",
         id: "QgCu3y",
       },
       {
+        user: `petrov@example.com`,
         text: "Вы что?! В магазине дешевле.",
         id: "ir3Nl5",
       },
+      { user: `ivanov@example.com`, text: "Неплохо, но дорого", id: "_ifwgy" },
       {
-        text: "Неплохо, но дорого",
-        id: "_ifwgy",
-      },
-      {
+        user: `petrov@example.com`,
         text: "Оплата наличными или перевод на карту?",
         id: "C_YBDX",
       },
-      {
-        text: "Неплохо, но дорого",
-        id: "VJ9Czg",
-      },
+      { user: `ivanov@example.com`, text: "Неплохо, но дорого", id: "VJ9Czg" },
     ],
   },
   {
+    user: `ivanov@example.com`,
     id: "Lsdv0z",
     title: "Куплю гантели.",
     picture: "item04.jpg",
@@ -144,15 +151,17 @@ const mockData = [
     category: ["Журналы"],
     comments: [
       {
-        text:
-          "Вы что?! В магазине дешевле. Оплата наличными или перевод на карту?",
+        user: `ivanov@example.com`,
+        text: "Вы что?! В магазине дешевле. Оплата наличными или перевод на карту?",
         id: "VHquMo",
       },
       {
+        user: `petrov@example.com`,
         text: "Продаю в связи с переездом. Отрываю от сердца.",
         id: "7I08nv",
       },
       {
+        user: `ivanov@example.com`,
         text: "Почему в таком ужасном состоянии? Вы что?! В магазине дешевле.",
         id: "zTIwas",
       },
@@ -440,9 +449,9 @@ test(`API refuses to delete non-existent comment`, () => {
 
 test(`When field type is wrong response code is 400`, async () => {
   const badOffers = [
-    {...newOffer, sum: true},
-    {...newOffer, picture: 12345},
-    {...newOffer, categories: `Котики`}
+    { ...newOffer, sum: true },
+    { ...newOffer, picture: 12345 },
+    { ...newOffer, categories: `Котики` },
   ];
   for (const badOffer of badOffers) {
     await request(app)
@@ -454,9 +463,9 @@ test(`When field type is wrong response code is 400`, async () => {
 
 test(`When field value is wrong response code is 400`, async () => {
   const badOffers = [
-    {...newOffer, sum: -1},
-    {...newOffer, title: `too short`},
-    {...newOffer, categories: []}
+    { ...newOffer, sum: -1 },
+    { ...newOffer, title: `too short` },
+    { ...newOffer, categories: [] },
   ];
   for (const badOffer of badOffers) {
     await request(app)
